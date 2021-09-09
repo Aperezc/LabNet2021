@@ -1,0 +1,27 @@
+﻿@model TransportePublico.Models.TransportePublico
+<div class="row">
+    <div class="col-md-5">
+        <h2>Formulario de Ingreso</h2>
+        <form action="/TransportePublico/AgregarTransporte" method="post">
+            <br />
+            <input type="text" class="form-control" name="cantidadPasajeros" placeholder="Cantidad Pasajeros" required autofocus>
+            <br />
+            @{
+                foreach (var item in Model.TipoTransportePublico)
+                {
+                    <input type="radio">@item
+                }
+
+            } 
+            
+            <br />
+            <button class="btn btn-primary" type="submit">
+                Agregar
+            </button>
+            
+        </form>
+
+    </div>
+</div>
+
+

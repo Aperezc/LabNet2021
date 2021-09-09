@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Página de Inicio";
+}
+
+<div class="jumbotron">
+    <h1>Gestión de Transporte Público</h1>
+    <p class="lead">Bienvenido al Sistema de Gestión de transporte Público de la Ciudad</p>
+</div>
+
+<div class="row">
+    <div class="col-md-5">
+        @Html.Partial("~/Views/TransportePublico/_transportePublicoAgregar.cshtml")
+    </div>
+    <div class="col-md-5">
+        @Html.Partial("~/Views/TransportePublico/_transportePublicoResultado.cshtml")
+    </div>
+</div>
