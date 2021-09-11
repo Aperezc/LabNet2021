@@ -12,6 +12,7 @@ namespace TransportePublico1.Models
             this.ListaTransportes = new List<TransportePublico>();
         }      
         public List<TransportePublico> ListaTransportes { get; set; }
+        public int NumeroUnidad { get; set; }
         
     }
 }

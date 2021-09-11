@@ -11,7 +11,19 @@
     <div class="col-md-5">
         @Html.Partial("~/Views/TransportePublico/_transportePublicoAgregar.cshtml")
     </div>
-    <div class="col-md-5">
-        @Html.Partial("~/Views/TransportePublico/_transportePublicoResultado.cshtml")
+    <div class="col-md-7">
+       <h2>Listado de Unidades de Transporte Público</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tipo de Transporte</th>
+                    <th>Cantidad de Pasajeros</th>
+                    <th>Numero de Transporte</th>
+                </tr>
+            </thead>
+            <tbody id="resultado">
+
+            </tbody>
+        </table>
     </div>
 </div>

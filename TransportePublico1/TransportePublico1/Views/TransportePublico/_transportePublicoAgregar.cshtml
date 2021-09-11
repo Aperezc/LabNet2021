@@ -1,7 +1,8 @@
-﻿<div class="row">
+﻿@model TransportePublico1.Models.TransporteResult
+<div class="row" style="margin-left:10px;">
     <h2>Formulario de Ingreso</h2>
-    <div class="col-md-5 form-horizontal">
-        <form action="/TransportePublico/TransportePublicoAgregar" method="post">
+    <div class="col-md-7 form-horizontal" >
+        <form action="" method="post">
             <br />
             <input type="text" class="form-control" name="cantidadPasajeros" placeholder="Cantidad de Pasajeros" required autofocus>
             <br />
@@ -10,12 +11,11 @@
                 <input type="radio" name="tipoTransporte" value="Taxi">
                 <label>Omnibus</label>
                 <input type="radio" name="tipoTransporte" value="Omnibus">
-            </label>
-            <button class="btn btn-primary" type="submit">
-                Agregar
-            </button>
-
+            </label>            
         </form>
+        <input type="button" onclick="AccionAgregar()" value="Agregar" class="btn btn-primary"/>
+
+
     </div>
 </div>
 
