@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Práctica N° 2: Extension Methods y Excepciones</h1>
+    <p class="lead">Se Hace práctica de lo Visto en Clase a través del uso de Extension Methods y Excepciones</p>
+   
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Divisiones</h2>
+
+        <div class="col-md-4 form-horizontal">
+            <input type="number" class="form-control" placeholder="Ingrese un Dividendo" name="numero" id="numero" />
+            <input type="button" class="btn btn-primary" value="Dividir con 0" onclick="DividirConCero()" />
+        </div>
+        <div class="col-md-4 form-horizontal">
+            <input type="number" class="form-control" placeholder="Ingrese un Dividendo" name="dividendo" id="dividendo"/>
+            <input type="number" class="form-control" placeholder="Ingrese un Divisor" name="divisor" id="divisor"/>
+            <input type="button" class="btn btn-primary" value="DIVIDIR" onclick="Dividir()" />
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h2>Capturar Excepciones</h2>
+        <div>
+            <input type="button" class="btn btn-primary" value="CAPTURAR Ex SISTEMA" onclick="CapturarExcepcion(this.id)" id="3" />
+            <input type="button" class="btn btn-primary" value="CAPTURAR Ex PERSONALIZADA" onclick="CapturarExcepcion(this.id)" id="4" />
+        </div>
+        
+    </div>
+   
+</div>
