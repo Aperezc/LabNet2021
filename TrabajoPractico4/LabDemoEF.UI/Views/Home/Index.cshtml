@@ -1,0 +1,63 @@
+﻿@model LabDemoEF.UI.Models.Suppliers.SuppliersModel
+@{
+    ViewBag.Title = "Home Page";
+    List<SelectListItem> lista = Model.SuppliersFilter;
+}
+
+<div class="jumbotron">
+    <h1>Trabajo Practico 4</h1>
+    <p class="lead">Practica EF</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+
+    @using (Html.BeginForm("ReadSuppliers", "Home", FormMethod.Post))
+    {
+       
+    <div class="col-sm-7 col-md-7 col-lg-7">
+        @Html.DisplayNameFor(m => m.ContactName)
+        @(Html.DropDownListFor(m => m.SupplierID, lista)
+
+        )
+    </div>
+
+
+        <input type="submit" value="Buscar" />
+
+    }
+</div>
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Contact Name</th>
+                <th>Company Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var supli in Model.Suppliers)
+            {
+                <tr>
+                    <td>@supli.ContactName</td>
+                    <td>@supli.CompanyName</td>
+                    <td>@supli.Address</td>
+                    <td>@supli.City</td>
+                    <td>@supli.Phone</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    <table class="table-condensed">
+        <tr>
+            <td>@Html.ActionLink("Agregar", "SuppliersDetail")</td>
+            
+            <td><input type="button" value="Modificar" /></td>
+            <td><input type="button" value="Eliminar" /></td>
+        </tr>
+    </table>
+</div>

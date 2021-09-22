@@ -1,0 +1,22 @@
+﻿@model LabDemoEF.UI.Models.Suppliers.SuppliersFilter
+
+@{
+    ViewBag.Title = "SuppliersFilter";
+}
+@using (Html.BeginForm("Home", "GetSuppliers", FormMethod.Post))
+{
+    @Html.DisplayNameFor(m => m.ContactName)
+    <div class="col-sm-2 col-md-2 col-lg-2">
+        @(Html.EditorFor(m => m.ContactName))
+    </div>
+    @Html.DropDownListFor(m => m.SuppliersNames, new List<SelectListItem>
+                  { new SelectListItem{Text="Male", Value="M"},
+                    new SelectListItem{Text="Female", Value="F"}}, "Please select")
+
+    <input type="submit" value = "Buscar"/>
+
+}
+
+
+
+
