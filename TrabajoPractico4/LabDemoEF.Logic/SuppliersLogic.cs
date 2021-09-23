@@ -15,18 +15,37 @@ namespace LabDemoEF.Logic
             return context.Suppliers.ToList();
         }
 
-        public bool AddSupplier(Suppliers newSuplier)
+        public bool AddSupplier(Suppliers newSupplier)
         {
             bool success = false;
-            if(newSuplier != null)
+            var supplierToMap = VmToMapEntity(newSupplier);
+            if(newSupplier != null)
             {
-                context.Suppliers.Add(newSuplier);
+                context.Suppliers.Add(supplierToMap);
 
                 context.SaveChanges();
                 success = true;
             }
             return success;
 
+
+        }
+        public Suppliers VmToMapEntity (Suppliers supplier)
+        {
+            Suppliers suppliersEntity = new Suppliers()
+            {
+                ContactName = supplier.ContactName,
+                CompanyName = supplier.CompanyName,
+                Phone = supplier.Phone,
+                City = supplier.City,
+                PostalCode = supplier.PostalCode,
+                Address = supplier.Address,
+                Fax = supplier.Fax,
+                HomePage = supplier.HomePage,
+                Region = supplier.Region,
+                ContactTitle = supplier.ContactTitle
+            };
+            return suppliersEntity;
 
         }
     }

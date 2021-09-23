@@ -1,7 +1,12 @@
 ﻿@model LabDemoEF.UI.Models.Suppliers.SuppliersModel
 @{
     ViewBag.Title = "Home Page";
-    List<SelectListItem> lista = Model.SuppliersFilter;
+    List<SelectListItem> lista = null;
+    if (Model.SuppliersFilter != null)
+    {
+       lista = Model.SuppliersFilter;
+    }
+
 }
 
 <div class="jumbotron">
@@ -31,6 +36,7 @@
     <table class="table">
         <thead>
             <tr>
+                <th></th>
                 <th>Contact Name</th>
                 <th>Company Name</th>
                 <th>Address</th>
@@ -42,6 +48,7 @@
             @foreach (var supli in Model.Suppliers)
             {
                 <tr>
+                    <td>@Html.CheckBox("SupplierID", new { value = supli.SupplierID, @checked = false })</td>
                     <td>@supli.ContactName</td>
                     <td>@supli.CompanyName</td>
                     <td>@supli.Address</td>

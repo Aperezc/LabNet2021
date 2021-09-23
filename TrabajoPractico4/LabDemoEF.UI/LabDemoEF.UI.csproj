@@ -128,9 +128,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ShippersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Shippers\ShippersDetail.cs" />
+    <Compile Include="Models\Shippers\ShippersModel.cs" />
     <Compile Include="Models\Suppliers\SuppliersDetail.cs" />
     <Compile Include="Models\Suppliers\SuppliersFilter.cs" />
     <Compile Include="Models\Suppliers\SuppliersModel.cs" />
@@ -179,6 +182,8 @@
     <Content Include="Views\PartialsView\_Filter.cshtml" />
     <Content Include="Views\Home\AddSuppliers.cshtml" />
     <Content Include="Views\Home\SuppliersDetail.cshtml" />
+    <Content Include="Views\Shippers\ShippersDetail.cshtml" />
+    <Content Include="Views\Home\ShippersDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

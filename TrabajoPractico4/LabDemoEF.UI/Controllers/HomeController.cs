@@ -1,4 +1,6 @@
-﻿using LabDemoEF.Logic;
+﻿using LabDemoEF.Entities;
+using LabDemoEF.Logic;
+using LabDemoEF.UI.Models.Shippers;
 using LabDemoEF.UI.Models.Suppliers;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,7 @@ namespace LabDemoEF.UI.Controllers
     public class HomeController : Controller
     {
         private SuppliersLogic _suppliersLogic = new SuppliersLogic();
+       
         public ActionResult Index(SuppliersModel modelo)
         {
             modelo = new SuppliersModel();
@@ -51,7 +54,7 @@ namespace LabDemoEF.UI.Controllers
             
             resultadoBusqueda.Suppliers = _suppliersLogic.GetSuppliers().Where(f => f.SupplierID == filtro.SupplierID).ToList();
             
-            return RedirectToAction("Index", "Home", resultadoBusqueda);
+            return RedirectToAction("Index", resultadoBusqueda);
         }
        
         public ActionResult SuppliersDetail()
@@ -63,10 +66,9 @@ namespace LabDemoEF.UI.Controllers
         [HttpPost]
         public ActionResult AddSuppliers(SuppliersDetail detail)
         {
-            var ultimoId = _suppliersLogic.GetSuppliers().Count();
-            detail.SupplierID = ultimoId + 1;
+           
             var result = _suppliersLogic.AddSupplier(detail);
-            return View("Index");
+            return Redirect("Index");
         }
 
         public ActionResult About()
