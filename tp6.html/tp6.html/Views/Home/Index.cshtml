@@ -1,0 +1,65 @@
+﻿@model tp6.html.Models.Persona
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Trabajo Práctico N° 6</h1>
+    <p class="lead">Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+<div class="row">
+    @using (Html.BeginForm("Agregar", "Home", FormMethod.Post, new { @id="formulario", @onsubmit = "return validacion()" }))
+    {
+    <div class="col-mg-4 datosPersona" >
+        <h2>Datos Personales</h2>
+        <table class="table" style="width:20%">
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(p => p.Nombre)
+                    </td>
+                    <td>
+                        @Html.EditorFor(m => m.Nombre)
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(p => p.Apellido)</td>
+                    <td>@Html.EditorFor(p => p.Apellido)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(p => p.Dni)</td>
+                    <td>@Html.EditorFor(p => p.Dni,new { htmlAttributes = new { @onkeypress = "return soloNumeros(event);" }})</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        
+        <div class="col-mg-4 datosEmpresa">
+            <h2>Datos de la Empresa</h2>
+            <table class="table" style="width:20%">
+                <tbody>
+                    <tr>
+                        <td>@Html.DisplayNameFor(e => e.Empresa.Nombre)</td>
+                        <td>@Html.EditorFor(e => e.Empresa.Nombre)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(e => e.Empresa.Telefono)</td>
+                        <td>@Html.EditorFor(e => e.Empresa.Telefono)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td><input type="submit" value="Agregar" class="btn-primary" /></td>
+                    <td><input type="button" value="Limpiar" class="btn-primary" onclick="LimpiarCampos()"/></td>
+                </tr>
+            </tbody>
+        </table>
+
+    }
+
+</div>
