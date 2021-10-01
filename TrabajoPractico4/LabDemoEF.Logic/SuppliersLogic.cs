@@ -18,16 +18,57 @@ namespace LabDemoEF.Logic
         public bool AddSupplier(Suppliers newSupplier)
         {
             bool success = false;
-            var supplierToMap = VmToMapEntity(newSupplier);
+            
             if(newSupplier != null)
             {
-                context.Suppliers.Add(supplierToMap);
+                context.Suppliers.Add(newSupplier);
 
                 context.SaveChanges();
                 success = true;
             }
             return success;
 
+
+        }
+        public bool UpdateSupplier(Suppliers supplier)
+        {
+            var supplierUpdate = context.Suppliers.Find(supplier.SupplierID);
+                       
+
+            bool succes = false;
+            if (supplier != null)
+            {
+                supplierUpdate.ContactName = supplier.ContactName;
+                supplierUpdate.CompanyName = supplier.CompanyName;
+                supplierUpdate.City = supplier.City;
+                supplierUpdate.Country = supplier.Country;
+                supplierUpdate.Phone = supplier.Phone;
+                supplierUpdate.Address = supplier.Address;
+
+                context.SaveChanges();
+                succes = true;
+
+
+            }
+            return succes;
+
+        }
+        public bool Delete(int id)
+        {
+            var supplier = context.Suppliers.Find(id);
+            bool success = false;
+            try
+            {
+                context.Suppliers.Remove(supplier);
+                success = true;
+                context.SaveChanges();
+            }
+            catch(Exception e)
+            {
+                success = false;
+            }
+
+            return success;
 
         }
         public Suppliers VmToMapEntity (Suppliers supplier)
@@ -37,13 +78,9 @@ namespace LabDemoEF.Logic
                 ContactName = supplier.ContactName,
                 CompanyName = supplier.CompanyName,
                 Phone = supplier.Phone,
-                City = supplier.City,
-                PostalCode = supplier.PostalCode,
-                Address = supplier.Address,
-                Fax = supplier.Fax,
-                HomePage = supplier.HomePage,
-                Region = supplier.Region,
-                ContactTitle = supplier.ContactTitle
+                City = supplier.City,               
+                Address = supplier.Address
+                
             };
             return suppliersEntity;
 

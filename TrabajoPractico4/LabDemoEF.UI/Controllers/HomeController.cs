@@ -14,62 +14,12 @@ namespace LabDemoEF.UI.Controllers
     {
         private SuppliersLogic _suppliersLogic = new SuppliersLogic();
        
-        public ActionResult Index(SuppliersModel modelo)
+        public ActionResult Index()
         {
-            modelo = new SuppliersModel();
-            List<LabDemoEF.Entities.Suppliers> resultado = new List<LabDemoEF.Entities.Suppliers>();
-            List<SelectListItem> lista = new List<SelectListItem>(); 
-            
-            foreach (var supplier in _suppliersLogic.GetSuppliers().ToList())
-            {
-                lista.Add(new SelectListItem()
-                {
-                    Text = supplier.ContactName,
-                    Value = supplier.SupplierID.ToString(),
-                    Selected = false
-                     
-                });
-                resultado.Add(new SuppliersModel()
-                {
-                    SupplierID= supplier.SupplierID,
-                    ContactName= supplier.ContactName,
-                    City = supplier.City,
-                    Address = supplier.Address,
-                    Phone = supplier.Phone,
-                    CompanyName = supplier.CompanyName
-                }
-                );
-                
-            }
-            
-            modelo.SuppliersFilter = lista;
-            modelo.Suppliers = resultado;
-            
-            return View(modelo);
-        }
-        [HttpPost]
-        public ActionResult ReadSuppliers(SuppliersModel filtro)
-        {
-            SuppliersModel resultadoBusqueda = new SuppliersModel();
-            
-            resultadoBusqueda.Suppliers = _suppliersLogic.GetSuppliers().Where(f => f.SupplierID == filtro.SupplierID).ToList();
-            
-            return RedirectToAction("Index", resultadoBusqueda);
-        }
-       
-        public ActionResult SuppliersDetail()
-        {
-            ViewBag.Message = "Agregar Nuevo Proveedor";
-            return View();
-        }
+            ViewBag.Message = "Your home description page.";
 
-        [HttpPost]
-        public ActionResult AddSuppliers(SuppliersDetail detail)
-        {
-           
-            var result = _suppliersLogic.AddSupplier(detail);
-            return Redirect("Index");
-        }
+            return View();
+        }      
 
         public ActionResult About()
         {
@@ -84,5 +34,6 @@ namespace LabDemoEF.UI.Controllers
 
             return View();
         }
+       
     }
 }

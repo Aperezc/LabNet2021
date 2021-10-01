@@ -1,0 +1,61 @@
+﻿@model LabDemoEF.UI.Models.Suppliers.SuppliersViewModel
+@{
+    ViewBag.Title = "Home Page";
+    List<SelectListItem> lista = Model.SuppliersFilter;
+    
+
+}
+
+<div class="jumbotron">
+    <h1>Trabajo Practico n° 7</h1>
+    <p class="lead">Practica EF - MVC </p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+
+    @using (Html.BeginForm("Index", "Suppliers", FormMethod.Post))
+    {
+        <div class="col-sm-7 col-md-7 col-lg-7">
+            @(Html.DropDownListFor(m => m.IDSupplier, lista))
+        </div>
+        <input type="submit" value="Buscar" />
+        
+    }
+
+</div>
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>                
+                <th>Contact Name</th>
+                <th>Company Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Phone</th>
+                <th colspan="2">ACTIONS</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var suplier in Model.Suppliers)
+            {
+                <tr>                    
+                    <td>@suplier.ContactName</td>
+                    <td>@suplier.CompanyName</td>
+                    <td>@suplier.Address</td>
+                    <td>@suplier.City</td>
+                    <td>@suplier.Phone</td>
+                    <td>@Html.ActionLink("Modificar", "AddModifySuppliers", new {idSupplier = suplier.IDSupplier }, new { @class = "btn btn-warning" })</td>
+                    <td>@Html.ActionLink("Eliminar", "DeleteSupplier", new { idSupplier = suplier.IDSupplier }, new { @class = "btn btn-danger" })</td>
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    <table class="table-condensed">
+        <tr>
+            <td>@Html.ActionLink("Agregar", "AddModifySuppliers", new { idSupplier = 0}, new { @class = "btn btn-success" })</td>           
+        </tr>
+    </table>
+</div>

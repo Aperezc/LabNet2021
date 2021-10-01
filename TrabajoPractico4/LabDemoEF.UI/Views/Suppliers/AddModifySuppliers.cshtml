@@ -1,11 +1,11 @@
-﻿@model LabDemoEF.UI.Models.Suppliers.SuppliersDetail
+﻿@model LabDemoEF.UI.Models.Suppliers.SuppliersDetailViewModel
 
 @{
     ViewBag.Title = "AddSuppliers";
 }
 
 <h2>Agregar Proveedores</h2>
-@using (Html.BeginForm("AddSuppliers", "Home", FormMethod.Post))
+@using (Html.BeginForm("AddModifySuppliers", "Suppliers", FormMethod.Post))
 {
     <table class="table">
         <tbody>
@@ -20,24 +20,10 @@
             <tr>
                 <td>@Html.DisplayNameFor(m => m.Address)</td>
                 <td>@Html.EditorFor(m => m.Address)</td>
-                <td>@Html.DisplayNameFor(m => m.Region)</td>
-                <td>@Html.EditorFor(m => m.Region)</td>
-                <td>@Html.DisplayNameFor(m => m.PostalCode)</td>
-                <td>@Html.EditorFor(m => m.PostalCode)</td>
-            </tr>
-            <tr>
-                <td>@Html.DisplayNameFor(m => m.ContactTitle)</td>
-                <td>@Html.EditorFor(m => m.ContactTitle)</td>
                 <td>@Html.DisplayNameFor(m => m.Phone)</td>
                 <td>@Html.EditorFor(m => m.Phone)</td>
-                <td>@Html.DisplayNameFor(m => m.HomePage)</td>
-                <td>@Html.EditorFor(m => m.HomePage)</td>
-            </tr>
-            <tr>
-                <td>@Html.DisplayNameFor(m => m.Fax)</td>
-                <td>@Html.EditorFor(m => m.Fax)</td>
-                
-            </tr>
+                <td>@Html.HiddenFor(m => m.IDSupplier)</td>
+            </tr>           
         </tbody>
     </table>
     <input type="submit" value="Agregar" />

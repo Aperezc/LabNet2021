@@ -8,11 +8,11 @@ using System.Web.Mvc;
 
 namespace LabDemoEF.UI.Models.Suppliers
 {
-    public class SuppliersModel : LabDemoEF.Entities.Suppliers
+    public class SuppliersViewModel : SuppliersDetailViewModel
     {
         
         public List<SelectListItem> SuppliersFilter { get; set; }
-        public List<LabDemoEF.Entities.Suppliers> Suppliers { get; set; }
+        public List<SuppliersDetailViewModel> Suppliers { get; set; }
         
         
 
